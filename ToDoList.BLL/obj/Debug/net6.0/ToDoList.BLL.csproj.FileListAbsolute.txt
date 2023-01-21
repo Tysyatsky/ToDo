@@ -1,0 +1,15 @@
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.csproj.AssemblyReference.cache
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.AssemblyInfoInputs.cache
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.AssemblyInfo.cs
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.csproj.CoreCompileInputs.cache
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\bin\Debug\net6.0\ToDoList.BLL.deps.json
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\bin\Debug\net6.0\ToDoList.BLL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\bin\Debug\net6.0\ToDoList.BLL.pdb
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\bin\Debug\net6.0\ToDoList.DAL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\bin\Debug\net6.0\ToDoList.DAL.pdb
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.csproj.CopyComplete
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\refint\ToDoList.BLL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ToDoList.BLL.pdb
+D:\savings\SoftServe\todo_vs\ToDoList.BLL\obj\Debug\net6.0\ref\ToDoList.BLL.dll

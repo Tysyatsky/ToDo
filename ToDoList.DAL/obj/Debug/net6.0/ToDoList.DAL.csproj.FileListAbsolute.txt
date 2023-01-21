@@ -1,0 +1,12 @@
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\bin\Debug\net6.0\ToDoList.DAL.deps.json
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\bin\Debug\net6.0\ToDoList.DAL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\bin\Debug\net6.0\ToDoList.DAL.pdb
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.csproj.AssemblyReference.cache
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.AssemblyInfoInputs.cache
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.AssemblyInfo.cs
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.csproj.CoreCompileInputs.cache
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\refint\ToDoList.DAL.dll
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ToDoList.DAL.pdb
+D:\savings\SoftServe\todo_vs\ToDoList.DAL\obj\Debug\net6.0\ref\ToDoList.DAL.dll
