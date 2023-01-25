@@ -67,3 +67,8 @@ D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\runtimes\win\lib\n
 D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Humanizer.dll
+D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Newtonsoft.Json.dll

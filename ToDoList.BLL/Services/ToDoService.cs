@@ -1,4 +1,5 @@
-﻿using ToDoList.BLL.Interfaces;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using ToDoList.BLL.Interfaces;
 using ToDoList.DAL.Interfaces;
 using ToDoList.DAL.Models;
 
@@ -22,10 +23,10 @@ namespace ToDoList.BLL.Services
         {
             try
             {
-                var todo = Get(id);
+                var todo = await Get(id);
                 if (todo == null)
                 {
-                    throw new ArgumentException(nameof(todo));
+                    throw new ArgumentException("Delete method error: Null todo");
                 }
                 await _repository.Delete(todo);
             }
@@ -35,25 +36,46 @@ namespace ToDoList.BLL.Services
             }
         }
 
-        public ToDo Get(int? id)
+        public async Task<ToDo> Get(int? id)
         {
-            var todo = _repository.Get(id);
+            var todo = await _repository.Get(id);
             if (todo == null)
-                throw new ArgumentException(nameof(todo));
+                throw new ArgumentException("Get method error: Null todo");
             return todo;
         }
 
         public ICollection<ToDo> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _repository.GetAll();
+            if(result == null)
+            {
+                throw new ArgumentNullException("Get all method error: Null result");
+            }
+            return result;
         }
 
-        public Task Update(ToDo toDo)
+        public async Task<ToDo> Update(int id, ToDo newTodo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var oldTodo = await Get(id);
+                if (oldTodo == null)
+                    throw new ArgumentNullException("Update todo method error: Null todo");
+
+                oldTodo.Name = newTodo.Name;
+                oldTodo.Description = newTodo.Description;
+                oldTodo.State = newTodo.State;
+
+                await _repository.Update(oldTodo);
+                return oldTodo;
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
         }
 
-        public Task UpdateStatus(int? id, State newState)
+        public ToDo UpdateStatus(int? id, State newState)
         {
             throw new NotImplementedException();
         }

@@ -26,9 +26,9 @@ namespace ToDoList.DAL.Repository
             await _dbContext.SaveChangesAsync();
         }
 
-        public ToDo Get(int? id)
+        public async Task<ToDo> Get(int? id)
         {
-            return _dbContext.ToDos.FirstOrDefault(x => x.Id == id);
+            return await _dbContext.ToDos.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public ICollection<ToDo> GetAll()

@@ -8,7 +8,7 @@ namespace ToDoList.DAL.Interfaces
         public Task Create(ToDo toDo);
         public Task Update(ToDo toDo);
         public Task Delete(ToDo toDo);
-        public ToDo Get(int? id);
+        public Task<ToDo> Get(int? id);
         public ICollection<ToDo> GetAll();
     }
 }

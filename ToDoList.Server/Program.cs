@@ -27,8 +27,14 @@ namespace ToDoList.Server
             builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
             builder.Services.AddScoped<IToDoService, ToDoService>();
 
+            builder.Services.AddCors();
+
             var app = builder.Build();
 
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -9,7 +9,7 @@ namespace ToDoList.DAL.Context
 
         public ToDoDbContext(DbContextOptions<ToDoDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+           // Database.EnsureCreated();
         }
 
         

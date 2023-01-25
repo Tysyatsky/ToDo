@@ -1,13 +1,14 @@
-﻿using ToDoList.DAL.Models;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using ToDoList.DAL.Models;
 
 namespace ToDoList.BLL.Interfaces
 {
     public interface IToDoService
     {
         Task Create(ToDo toDo);
-        Task UpdateStatus(int? id, State newState);
-        Task Update(ToDo toDo);
-        ToDo Get(int? id);
+        ToDo UpdateStatus(int? id, State newState);
+        Task<ToDo> Update(int id, ToDo newTodo);
+        Task<ToDo> Get(int? id);
         Task Delete(int? id);
         ICollection<ToDo> GetAll();
     }
