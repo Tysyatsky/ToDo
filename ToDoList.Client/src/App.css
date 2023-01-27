@@ -1,20 +1,28 @@
+body {
+  background-color: lightgray;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: burlywood;
+  background-color: lightgray;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.heading{
+.heading_text{
   text-transform: uppercase;
   font-size: 40px;
   margin: 30px 0;
-  color: white;
-  z-index: 1;
+  color: black;
   text-align: center;
+}
+
+.header{
+  background-color: darkgray;
+  width: 100%;
 }
 
 @media (max-width: 800px){

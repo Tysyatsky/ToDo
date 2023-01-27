@@ -1,7 +1,7 @@
 
 export interface ToDo{
     id: number;
-    todo: string;
+    name: string;
     description: string;
     state: number;
 }

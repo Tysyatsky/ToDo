@@ -2,45 +2,132 @@
     display: flex;
     width: 90%;
     position: relative;
+    flex-direction: column;
     align-items: center;
 }
 
 .input__box {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 20px 30px;
-    font-size: 25px;
+    font-size: 12px;
     border: none;
     transition: 0.2s;
-    box-shadow: inset 0 0 5px brown;
+    box-shadow: inset 0 0 5px black;
+    margin-bottom: 5px;
 }
 
-.input__box:focus {
-    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 1);
-    outline: none;
-}
 
 .input_submit{
-    position: absolute;
+    position: relative;
     width: 50px;
     height: 50px;
     margin: 12px;
     border-radius: 50px;
-    right: 0px;
     border: none;
     font-size: 15px;
-    background-color: rgb(255, 235, 205);
-    color: brown;
+    background-color: lightgray;
+    color: rgb(103, 103, 103);
     transform: 0.2s all;
-    box-shadow: 0 0 10px brown;
+    box-shadow: 0 0 5px black;
+    font-size: 24pt;
 
 }
 
 .input_submit:hover {
-    background-color: rgb(255, 235, 225);
+    background-color: lightslategray;
 }
 
 .input_submit:active{
     transform: scale(0.95);
-    box-shadow: 0 0 5px brown;
+    box-shadow: 0 0 5px rgb(103, 103, 103);
+}
+
+.todos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+    flex-direction: column;
+    background-color: darkred;
+    border-radius: 3%;
+}
+
+.todo__single {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    border-radius: 2%;
+    background-color: lightgray;
+    margin: 10px;
+    box-shadow: 0 0 5px darkgray;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.todo__single:hover{
+    transition: 0.2s;
+    scale: 1.03;
+    box-shadow: 0 0 5px black;
+}
+
+.todo__single--text h2{
+    font-size: 14px;
+    flex:1;
+    align-items: center;
+    padding: 5px;
+    color: black;
+
+}
+
+.todo__single--text h4{
+    font-size: 14px;
+    flex:1;
+    align-items: center;
+    padding: 5px;
+    color: black;
+}
+
+.todos__heading{
+    font-size: 28px;
+    color: lightgray;
+    padding: 15px;
+}
+
+.inProgress{
+    background-color: darkgoldenrod;
+}
+
+.done{
+    background-color: darkolivegreen;
+}
+
+.icon{
+    position: relative;
+    left: 95%;
+    bottom: 5%;
+}
+
+.icon__single{
+    position: relative;
+}
+
+.container{
+    display: flex;
+    width: 95%;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+@media (max-width: 900px){
+    .input{
+        width: 95%;
+    }
+    .todos{
+        width: 95%;
+        margin-bottom: 10px;
+    }
+    .container{
+        width: 95%;
+        flex-direction: column;
+    }
 }
