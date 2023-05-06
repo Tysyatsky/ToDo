@@ -72,3 +72,4 @@ D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Microsoft.EntityFr
 D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\savings\SoftServe\todo_vs\ToDoList.Server\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

@@ -21,26 +21,21 @@ namespace ToDoList.BLL.Services
 
         public async Task Delete(int? id)
         {
-            try
+            var todo = await Get(id);
+            if (todo == null)
             {
-                var todo = await Get(id);
-                if (todo == null)
-                {
-                    throw new ArgumentException("Delete method error: Null todo");
-                }
-                await _repository.Delete(todo);
+                throw new ArgumentException("Delete method error: Null todo");
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            await _repository.Delete(todo);
         }
 
         public async Task<ToDo> Get(int? id)
         {
             var todo = await _repository.Get(id);
             if (todo == null)
+            {
                 throw new ArgumentException("Get method error: Null todo");
+            }
             return todo;
         }
 
@@ -56,23 +51,18 @@ namespace ToDoList.BLL.Services
 
         public async Task<ToDo> Update(int id, ToDo newTodo)
         {
-            try
+            var oldTodo = await Get(id);
+            if (oldTodo == null || newTodo == null)
             {
-                var oldTodo = await Get(id);
-                if (oldTodo == null)
-                    throw new ArgumentNullException("Update todo method error: Null todo");
-
-                oldTodo.Name = newTodo.Name;
-                oldTodo.Description = newTodo.Description;
-                oldTodo.State = newTodo.State;
-
-                await _repository.Update(oldTodo);
-                return oldTodo;
+                throw new ArgumentNullException("Update todo method error: Null todo");
             }
-            catch (ArgumentNullException)
-            {
-                throw;
-            }
+
+            oldTodo.Name = newTodo.Name;
+            oldTodo.Description = newTodo.Description;
+            oldTodo.State = newTodo.State;
+
+            await _repository.Update(oldTodo);
+            return oldTodo;
         }
 
         public ToDo UpdateStatus(int? id, State newState)

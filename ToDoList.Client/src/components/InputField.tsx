@@ -36,7 +36,7 @@ const InputField: React.FC<Props> = ({todo, description, setTodo, setDesc, handl
       <AddForm todo={todo} description={description} setDesc = {setDesc} setTodo={setTodo} handleAdd={handleAdd}/>
     </Modal.Body>
     <Modal.Footer>
-      <Button variant='secondary' onClick={handleClose}>Close button</Button>
+      <Button variant='secondary' onClick={handleClose}>Close</Button>
     </Modal.Footer>
   </Modal>
     </div>

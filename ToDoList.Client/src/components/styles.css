@@ -56,7 +56,7 @@
     display: grid;
     grid-template-columns: 80% 20%;
     border-radius: 2%;
-    background-color: lightgray;
+    background-color: white;
     margin: 10px;
     box-shadow: 0 0 5px darkgray;
     border-radius: 5px;
@@ -88,9 +88,11 @@
 
 .todos__heading{
     font-size: 28px;
-    color: lightgray;
+    color: white;
     padding: 15px;
+    box-shadow: 0 0 15px darkgray;
 }
+
 
 .inProgress{
     background-color: darkgoldenrod;

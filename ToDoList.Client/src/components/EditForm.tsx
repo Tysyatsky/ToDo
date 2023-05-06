@@ -1,5 +1,3 @@
-import { Button, Form } from "react-bootstrap";
-
 
 interface Props {
     todoId: number, 
@@ -12,9 +10,9 @@ interface Props {
 
 const EditForm = ({todoId, name, setTodo, description, setDesc, handleEdit} : Props) => {
     return(
-        <Form onSubmit={(e) => handleEdit(e, todoId)}>
-          <Form.Group>
-            <Form.Control type='text' 
+        <form onSubmit={(e) => handleEdit(e, todoId)}>
+          <label>
+            <input type='text' 
             placeholder='Title *'
             value={name} 
             name='todo'
@@ -22,11 +20,10 @@ const EditForm = ({todoId, name, setTodo, description, setDesc, handleEdit} : Pr
               (e) => setTodo(e.target.value)
             } 
             required>
-
-            </Form.Control>
-          </Form.Group>
-          <Form.Group>
-            <Form.Control type='text' 
+            </input>
+          </label>
+          <label>
+            <input type='text' 
             placeholder='Description *'
             value={description} 
             name='todo'
@@ -34,13 +31,12 @@ const EditForm = ({todoId, name, setTodo, description, setDesc, handleEdit} : Pr
               (e) => setDesc(e.target.value)
             } 
             required>
-
-            </Form.Control>
-          </Form.Group>
-          <Button variant='success' type='submit'>
+            </input>
+          </label>
+          <button type='submit'>
             Edit
-          </Button>
-        </Form>
+          </button>
+        </form>
     )
 }
 

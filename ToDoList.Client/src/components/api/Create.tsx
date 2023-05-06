@@ -1,6 +1,6 @@
 import api from './todos'
 
-const Create = (name: string, desc: string) => {
+const Create = async (name: string, desc: string) => {
     let id = 
     api.post('/Create', {
         name: name,
@@ -9,7 +9,7 @@ const Create = (name: string, desc: string) => {
     })
     .then((responce) => {
         return responce.data.id
-    })
+    }).then()
     return id as unknown as number;
 }
 

@@ -27,8 +27,15 @@ namespace ToDoList.DAL.Repository
         }
 
         public async Task<ToDo> Get(int? id)
-        {
-            return await _dbContext.ToDos.FirstOrDefaultAsync(x => x.Id == id);
+        {   
+            var todo = await _dbContext.ToDos.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(todo == null)
+            {
+                throw new NullReferenceException("Todo was not found!");
+            }
+
+            return todo;
         }
 
         public ICollection<ToDo> GetAll()

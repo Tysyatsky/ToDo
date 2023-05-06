@@ -4,10 +4,9 @@ import {AiFillEdit,AiFillDelete} from 'react-icons/ai'
 import {MdDone} from 'react-icons/md'
 import DeletePopup from './DeletePopup'
 import { Draggable } from 'react-beautiful-dnd'
-import { Button, Modal } from 'react-bootstrap'
-import EditForm from './EditForm'
 import Delete from './api/Delete'
 import Update from './api/Update';
+import EditModal from './EditModal'
 
 interface Props {
   index: number,
@@ -15,7 +14,6 @@ interface Props {
   todos: ToDo[],
   setTodos: React.Dispatch<React.SetStateAction<ToDo[]>>
 }
-
 
 const SingleTodo = ({index, todo, todos, setTodos}: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
@@ -48,10 +46,6 @@ const SingleTodo = ({index, todo, todos, setTodos}: Props) => {
     setEdit(true);
   }
 
-  const handleClose = () => {
-    setEdit(false);
-  }
-  
   return (
     <div>
       <Draggable draggableId={todo.id.toString()} index = {index}>
@@ -100,20 +94,8 @@ const SingleTodo = ({index, todo, todos, setTodos}: Props) => {
         
         </form>)
       }
-      
     </Draggable>
-
-    <Modal show={edit}>
-    <Modal.Header>
-      <Modal.Title>Edit ToDo</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      <EditForm todoId={todo.id} name = {editTodo} setTodo = {setEditTodo} description = {editDesc} setDesc = {setEditDesc} handleEdit={handleEdit}/>
-      </Modal.Body>
-    <Modal.Footer>
-      <Button variant='secondary' onClick={handleClose}>Close</Button>
-    </Modal.Footer>
-  </Modal>
+    <EditModal todoId = {todo.id} name = {editTodo} description={editDesc} edit = {edit} setTodo={setEditTodo} setDesc = {setEditDesc} setEdit = {setEdit} handleEdit = {handleEdit}></EditModal>
     <DeletePopup todoId={todo.id} trigger={remove} setTrigger={setRemove} handleDelete={handleDelete}></DeletePopup>
     </div>
   )

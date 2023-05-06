@@ -13,10 +13,7 @@ namespace ToDoList.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -24,8 +21,8 @@ namespace ToDoList.Server
             builder.Services.AddDbContext<ToDoDbContext>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("ToDo")));
 
-            builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
-            builder.Services.AddScoped<IToDoService, ToDoService>();
+            builder.Services.AddTransient<IToDoRepository, ToDoRepository>();
+            builder.Services.AddTransient<IToDoService, ToDoService>();
 
             builder.Services.AddCors();
 
@@ -36,7 +33,6 @@ namespace ToDoList.Server
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -45,7 +41,7 @@ namespace ToDoList.Server
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            // app.UseAuthorization();
 
 
             app.MapControllers();

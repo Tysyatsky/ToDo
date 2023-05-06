@@ -9,13 +9,11 @@ namespace ToDoList.DAL.Context
 
         public ToDoDbContext(DbContextOptions<ToDoDbContext> options) : base(options)
         {
-           // Database.EnsureCreated();
         }
-
         
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

@@ -6,7 +6,7 @@ interface Props{
     trigger: boolean;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
     handleDelete: (id:number) => void;
-  }
+}
 
 const DeletePopup = (props: Props) => {
   return props.trigger ? ( 
@@ -18,7 +18,7 @@ const DeletePopup = (props: Props) => {
         <button className='cancel-btn' onClick={() => {props.setTrigger(false)}}>Cancel</button>
       </div>
     </div>
-  ) : <div></div>
+  ) : <div />
 }
 
 export default DeletePopup

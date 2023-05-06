@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import InputField from './components/InputField';
+import AddModal from './components/AddModal';
 import { ToDo } from './model';
 import ToDoList from './components/ToDoList';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
@@ -77,7 +77,7 @@ const App: React.FC = () => {
         <div className='header'>
           <h1 className="heading_text">To do list</h1>
         </div>
-      <InputField todo={todo} setTodo = {setTodo} description={description} setDesc = {setDesc} handleAdd ={handleAdd}/>
+      <AddModal todo={todo} setTodo = {setTodo} description={description} setDesc = {setDesc} handleAdd ={handleAdd}/>
       <ToDoList todos={todos} setTodos={setTodos}
         inProgressTodos={inProgressTasks} setInProgressTodos={setInProgressTasks}
         doneTodos = {doneTasks} setDoneTodos = {setDoneTasks}/>

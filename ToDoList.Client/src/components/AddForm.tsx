@@ -1,6 +1,3 @@
-import { Button } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
-
 interface Props {
   todo: string | undefined;
   description: string | undefined;
@@ -11,9 +8,9 @@ interface Props {
 
 const AddForm = ({todo, description, setTodo, setDesc, handleAdd}: Props) => {
     return (
-        <Form onSubmit={(e) => handleAdd(e)}>
-          <Form.Group>
-            <Form.Control type='text' 
+        <form onSubmit={(e) => handleAdd(e)}>
+          <label>
+            <input type='text' 
             placeholder='Title *'
             value={todo} 
             name='todo'
@@ -22,10 +19,10 @@ const AddForm = ({todo, description, setTodo, setDesc, handleAdd}: Props) => {
             } 
             required>
 
-            </Form.Control>
-          </Form.Group>
-          <Form.Group>
-            <Form.Control type='text' 
+            </input>
+          </label>
+          <label>
+            <input type='text' 
             placeholder='Description *'
             value={description} 
             name='todo'
@@ -34,12 +31,12 @@ const AddForm = ({todo, description, setTodo, setDesc, handleAdd}: Props) => {
             } 
             required>
 
-            </Form.Control>
-          </Form.Group>
-          <Button variant='success' type='submit'>
+            </input>
+          </label>
+          <button type='submit'>
             Add new Todo
-          </Button>
-        </Form>
+          </button>
+        </form>
       );
 }
 
