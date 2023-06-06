@@ -41,7 +41,7 @@ const ToDoList: React.FC<Props> = ({todos, setTodos, inProgressTodos, setInProgr
               todo = {todo}
               key = {todo.id}
               todos = {todos}
-              setTodos = {setTodos}
+              setTodos={setTodos}
             />
             ))}
           {provided.placeholder}

@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using ToDoList.BLL.Interfaces;
 using ToDoList.BLL.Services;
 using ToDoList.DAL.Context;
 using ToDoList.DAL.Interfaces;
+using ToDoList.DAL.Models;
 using ToDoList.DAL.Repository;
 
 namespace ToDoList.Server
@@ -17,9 +20,14 @@ namespace ToDoList.Server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.Configure<ToDoStoreDatabaseSettings>(
+                builder.Configuration.GetSection(nameof(ToDoStoreDatabaseSettings)));
 
-            builder.Services.AddDbContext<ToDoDbContext>(
-                options => options.UseSqlServer(builder.Configuration.GetConnectionString("ToDo")));
+            builder.Services.AddSingleton<IToDoStoreDatabaseSettings>(
+                s => s.GetRequiredService<IOptions<ToDoStoreDatabaseSettings>>().Value);
+
+            builder.Services.AddSingleton<IMongoClient>(
+                s => new MongoClient(builder.Configuration.GetValue<string>("ToDoStoreDatabaseSettings:ConnectionString")));
 
             builder.Services.AddTransient<IToDoRepository, ToDoRepository>();
             builder.Services.AddTransient<IToDoService, ToDoService>();

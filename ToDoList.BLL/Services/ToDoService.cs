@@ -19,7 +19,7 @@ namespace ToDoList.BLL.Services
             await _repository.Create(toDo);
         }
 
-        public async Task Delete(int? id)
+        public async Task Delete(string? id)
         {
             var todo = await Get(id);
             if (todo == null)
@@ -29,7 +29,7 @@ namespace ToDoList.BLL.Services
             await _repository.Delete(todo);
         }
 
-        public async Task<ToDo> Get(int? id)
+        public async Task<ToDo> Get(string? id)
         {
             var todo = await _repository.Get(id);
             if (todo == null)
@@ -39,9 +39,9 @@ namespace ToDoList.BLL.Services
             return todo;
         }
 
-        public ICollection<ToDo> GetAll()
+        public async Task<ICollection<ToDo>> GetAll()
         {
-            var result = _repository.GetAll();
+            var result = await _repository.GetAll();
             if(result == null)
             {
                 throw new ArgumentNullException("Get all method error: Null result");
@@ -49,7 +49,7 @@ namespace ToDoList.BLL.Services
             return result;
         }
 
-        public async Task<ToDo> Update(int id, ToDo newTodo)
+        public async Task<ToDo> Update(string id, ToDo newTodo)
         {
             var oldTodo = await Get(id);
             if (oldTodo == null || newTodo == null)
@@ -65,7 +65,7 @@ namespace ToDoList.BLL.Services
             return oldTodo;
         }
 
-        public ToDo UpdateStatus(int? id, State newState)
+        public ToDo UpdateStatus(string? id, State newState)
         {
             throw new NotImplementedException();
         }

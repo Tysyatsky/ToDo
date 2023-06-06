@@ -7,6 +7,7 @@ import { Draggable } from 'react-beautiful-dnd'
 import Delete from './api/Delete'
 import Update from './api/Update';
 import EditModal from './EditModal'
+import Get from './api/Get'
 
 interface Props {
   index: number,
@@ -19,25 +20,26 @@ const SingleTodo = ({index, todo, todos, setTodos}: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.name);
   const [editDesc, setEditDesc] = useState<string>(todo.description);
-  const [remove, setRemove] = useState<boolean>(false);
+    const [remove, setRemove] = useState<boolean>(false);
 
-  const handleDone = (id:number) => {
-    setTodos(todos.map(
-      (todo) => todo.id === id ? {...todo, state: todo.state = 2} : todo
+
+    const handleDone = (id: string) => {
+        setTodos(todos.map(
+            (todo) => todo.id === id ? { ...todo, state: todo.state = 2, orderId: todo.state.toString() + (todos.filter((todo) => todo.state = 2).length + 1).toString() } : todo
       ) 
     )
   }
 
-  const handleDelete = async (id:number) => {
-    await Delete(id);
-    setTodos(todos.filter((todo) => todo.id !== id))
+    const handleDelete = async (id: string) => {
+      await Delete(id);
+      setTodos(todos.filter((todo) => todo.id !== id))
   }
 
-  const handleEdit = async (e: React.FormEvent, id:number) => {
-    e.preventDefault();
-    await Update(id, editTodo, editDesc, 0);
-    setTodos(
-      todos.map((todo) => todo.id === id ? {...todo, name: editTodo, description: editDesc} : todo)
+    const handleEdit = async (e: React.FormEvent, id: string) => {
+        e.preventDefault();
+        await Update(id, "0", editTodo, editDesc, 0, false);
+      setTodos(
+          todos.map((todo) => todo.id === id ? { ...todo, name: editTodo, description: editDesc } : todo)
     );
     setEdit(false);
   }
@@ -48,7 +50,7 @@ const SingleTodo = ({index, todo, todos, setTodos}: Props) => {
 
   return (
     <div>
-      <Draggable draggableId={todo.id.toString()} index = {index}>
+      <Draggable draggableId={todo.id} index = {index}>
       {
         (provided) => (
         <form 

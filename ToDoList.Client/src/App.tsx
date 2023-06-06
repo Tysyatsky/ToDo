@@ -6,6 +6,7 @@ import ToDoList from './components/ToDoList';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import Create from './components/api/Create';
 import Update from "./components/api/Update";
+import { v4 } from "uuid";
 
 const App: React.FC = () => {
 
@@ -18,21 +19,28 @@ const App: React.FC = () => {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if(todo){
-      let id = await Create(todo, description);
-      setTodos([...todos, {id:id, name:todo, state: 0, description: description}])
+      if (todo) {
+          let id = await Create("0", todo, (todos.length + 1).toString(), description);
+        setTodos([...todos, { id: id, orderId: "0", name: todo, state: 0, description: description }])
       console.log(id)
       setDesc("")
       setTodo("")
     }
-  };
+    };
+
+    const onDragStart = () => {
+
+    }
 
   const onDragEnd = (result: DropResult) => {
     const {source, destination} = result;
     if(!destination 
       || (destination.droppableId === source.droppableId 
       && destination.index === source.index)) 
-      return;
+        return;
+
+      console.log(source.droppableId);
+      console.log(destination.droppableId);
     let add,
     fresh = todos,
     active = inProgressTasks,
@@ -51,17 +59,17 @@ const App: React.FC = () => {
     }
 
     if(destination.droppableId === 'newTodos'){
-      add.state = 0;
-      Update(add.id, add.name, add.description, add.state);
+        add.state = 0;
+        Update(add.id, "0", add.name, add.description, add.state, true);
       fresh.splice(destination.index, 0, add);
     } else if(destination.droppableId === 'inProgressTodos') {
-      add.state = 1;
-      Update(add.id, add.name, add.description, add.state);
+        add.state = 1;
+        Update(add.id, "0", add.name, add.description, add.state, true);
       active.splice(destination.index, 0, add);
     }
     else {
-      add.state = 2;
-      Update(add.id, add.name, add.description, add.state);
+        add.state = 2;
+        Update(add.id, "0", add.name, add.description, add.state, true);
       done.splice(destination.index, 0, add);
     }
 
@@ -71,8 +79,8 @@ const App: React.FC = () => {
   };
 
   return (
-    
-    <DragDropContext onDragEnd={onDragEnd}>
+
+      <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
       <div className="App">
         <div className='header'>
           <h1 className="heading_text">To do list</h1>

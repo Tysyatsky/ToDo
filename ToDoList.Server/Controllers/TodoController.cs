@@ -28,9 +28,9 @@ namespace ToDoList.API.Controllers
         }
 
         [HttpGet("/GetAll")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {   
-            var result = _toDoService.GetAll();
+            var result = await _toDoService.GetAll();
             if(result.Count < 0) 
             {
                 return BadRequest();
@@ -39,7 +39,7 @@ namespace ToDoList.API.Controllers
         }
 
         [HttpGet("/Get/{id}")]
-        public async Task<IActionResult> Get([FromRoute] int id)
+        public async Task<IActionResult> Get([FromRoute] string id)
         {
             var todo = await _toDoService.Get(id);
             if (todo == null)
@@ -49,7 +49,7 @@ namespace ToDoList.API.Controllers
 
         // POST: TodoController/Delete/5
         [HttpDelete("/Delete/{id=id}")]
-        public async Task<IActionResult> Delete([FromRoute]int id)
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace ToDoList.API.Controllers
             }
         }
         [HttpPut("/Update/{id}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ToDo newTodo)
+        public async Task<IActionResult> Update([FromRoute] string id, [FromBody] ToDo newTodo)
         {
             try
             {

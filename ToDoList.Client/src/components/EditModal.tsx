@@ -1,14 +1,14 @@
 import EditForm from "./EditForm";
 
 interface Props{
-    todoId: number, 
+    todoId: string, 
     name: string | undefined;
     description: string | undefined;
     edit: boolean;
     setTodo: React.Dispatch<React.SetStateAction<string>>;
     setDesc: React.Dispatch<React.SetStateAction<string>>;
     setEdit: React.Dispatch<React.SetStateAction<boolean>>;
-    handleEdit: (e: React.FormEvent, id:number) => void;
+    handleEdit: (e: React.FormEvent, id: string) => void;
 }
 
 const EditModal = ({todoId, name, description, edit, setTodo, setDesc, setEdit,handleEdit} : Props) =>{

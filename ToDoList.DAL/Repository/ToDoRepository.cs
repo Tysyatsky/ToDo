@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ToDoList.DAL.Context;
+﻿using MongoDB.Driver;
 using ToDoList.DAL.Interfaces;
 using ToDoList.DAL.Models;
 
@@ -7,46 +6,40 @@ namespace ToDoList.DAL.Repository
 {
     public class ToDoRepository : IToDoRepository
     {
-        private readonly ToDoDbContext _dbContext;
-
-        public ToDoRepository(ToDoDbContext dbContext)
+        private readonly IMongoCollection<ToDo> _todos;
+        public ToDoRepository(IToDoStoreDatabaseSettings settings, IMongoClient client)
         {
-            _dbContext = dbContext;
+            var database = client.GetDatabase(settings.DatabaseName);
+
+            _todos = database.GetCollection<ToDo>(settings.ToDoCollectionName);
         }
 
-        public async Task Create(ToDo toDo)
+        public async Task<ToDo> Create(ToDo toDo)
         {
-            _dbContext.Add(toDo);
-            await _dbContext.SaveChangesAsync();
+            await _todos.InsertOneAsync(toDo);
+            return toDo;
         }
 
         public async Task Delete(ToDo toDo)
         {
-            _dbContext.Remove(toDo);
-            await _dbContext.SaveChangesAsync();
+            await _todos.DeleteOneAsync(todo => todo.Id == toDo.Id);
         }
 
-        public async Task<ToDo> Get(int? id)
-        {   
-            var todo = await _dbContext.ToDos.FirstOrDefaultAsync(x => x.Id == id);
-
-            if(todo == null)
-            {
-                throw new NullReferenceException("Todo was not found!");
-            }
-
+        public async Task<ToDo> Get(string? id)
+        {
+            var cursor = await _todos.FindAsync(todo => todo.Id == id);
+            var todo = await cursor.FirstOrDefaultAsync();
             return todo;
         }
 
-        public ICollection<ToDo> GetAll()
+        public async Task<ICollection<ToDo>> GetAll()
         {
-            return _dbContext.ToDos.Select(x => x).ToList();
+            return await _todos.Find(todo => true).ToListAsync();
         }
 
         public async Task Update(ToDo toDo)
         {
-            _dbContext.Update(toDo);
-            await _dbContext.SaveChangesAsync();
+            await _todos.ReplaceOneAsync(todo => todo.Id == toDo.Id, toDo);
         }
     }
 }

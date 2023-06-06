@@ -1,6 +1,7 @@
 
 export interface ToDo{
-    id: number;
+    id: string;
+    orderId: string;
     name: string;
     description: string;
     state: number;

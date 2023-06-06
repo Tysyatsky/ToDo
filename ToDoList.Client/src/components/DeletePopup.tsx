@@ -2,10 +2,10 @@ import React from 'react'
 import './Popup.css'
 
 interface Props{
-    todoId: number;
+    todoId: string;
     trigger: boolean;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
-    handleDelete: (id:number) => void;
+    handleDelete: (id: string) => void;
 }
 
 const DeletePopup = (props: Props) => {

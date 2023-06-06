@@ -1,11 +1,11 @@
 
 interface Props {
-    todoId: number, 
+    todoId: string, 
     name: string | undefined;
     description: string | undefined;
     setTodo: React.Dispatch<React.SetStateAction<string>>;
     setDesc: React.Dispatch<React.SetStateAction<string>>;
-    handleEdit: (e: React.FormEvent, id:number) => void;
+    handleEdit: (e: React.FormEvent, id: string) => void;
 }
 
 const EditForm = ({todoId, name, setTodo, description, setDesc, handleEdit} : Props) => {
